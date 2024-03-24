@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Side Navbar</title>
+    <link rel="stylesheet" href="CSS\mainstyles.css" />
+
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+  </head>
+  <body>
+    <section class="sidebar">
+      <div class="nav-header">
+        <p class="logo">Scheduler</p>
+        <i class="bx bx-menu-alt-right btn-menu"></i>
+      </div>
+      <ul class="nav-links">
+        <li>
+          <a href="./home1">
+            <i class="bx bx-home-alt-2"></i>
+            <span class="title">Home</span>
+          </a>
+          <span class="tooltip">Home</span>
+        </li>
+        <h4 class="tasks" style="display: none;">Tasks</h4>
+        <li>
+          <a href="./todo">
+            <i class='bx bx-list-ol'></i>
+            <span class="title">To-Do List</span>
+          </a>
+          <span class="tooltip">To-Do List</span>
+        </li>
+        <li>
+          <a href="./notes">
+            <i class='bx bxs-sticker' ></i>
+            <span class="title">Sticky Wall</span>
+          </a>
+          <span class="tooltip">Sticky Wall</span>
+        </li>
+        <h4 class="Lists" style="display: none;">Lists</h4>
+        <div class="searchbutton">
+            <li>
+            <a href="#">
+                <i class="bx bx-cog"></i>
+                <span class="title">Settings</span>
+            </a>
+            <span class="tooltip">Settings</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-exit'></i>
+                    <span class="title">Log Out</span>
+                </a>
+                <span class="tooltip">Log Out</span>
+            </li>
+        </div>
+      </ul>
+    </section>
+
+    <script src="JS\sidebar.js">
+    </script>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home-Page</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Poppins:wght@300;400;500;600&display=swap');
+        * {
+        margin: 0;
+        padding: 0; 
+        box-sizing: border-box;   
+        font-family: 'Poppins', sans-serif;
+    }
+    .main{
+        display: flex; 
+        flex-direction: row;
+    }
+    .Firsthalf{
+        height: 100vh;
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #2F3C7E;
+    }
+    .Firsthalf h1{
+        font-size: 45px;
+        font-weight: 600;
+    }
+    .secondhalf{
+        height: 100vh; width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #FBEAEB;
+    }
+
+    .secondhalf button{
+        background-color: #2F3C7E;
+        width: 200px;
+        height: 60px;
+        border: none;
+        color: white;
+        font-weight: 600;
+        font-size: 25px;
+        border-radius: 10px;
+    }
+
+    .secondhalf button:hover {
+        cursor: pointer;
+        background-color: rgb(73, 73, 251);
+    }
+</style>
+<body>  <div class="main">
+            <div class="Firsthalf">
+                <h1 class="j" style="color: #FBEAEB;"></h1>
+            </div>
+            <div class="secondhalf">
+                <button onclick="go()">Get started</button>
+            </div>
+        </div>
+</body>
+<script>
+    function go() {
+        window.location.href = 'login';
+    }
+
+    const div = document.querySelector(".j");
+    const text = "Welcome to scheduler";
+
+    function textTypingEffect(element, text, i = 0){
+        element.textContent += text[i];
+
+        if (i === text.length - 1)
+        {
+            return;
+        }
+        setTimeout(() => textTypingEffect(element, text, i + 1), 100);
+
+    }
+    textTypingEffect(div, text);
+
+    setInterval(() => {
+        div.textContent = "";
+        textTypingEffect(div, text);
+    }, 5000);
+
+</script>
+</html>

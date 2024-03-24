@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        .classone{
+            display: flex;
+            justify-content:center;
+            align-items: center;
+            height: 100vh;
+            font-size: 20px;
+            font-family:sans-serif;
+        }
+
+        .elem{
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        #name{
+            width: 300px;
+        }
+
+        .sb{
+            display: flex;
+            justify-content:center;
+            align-items: center;
+            border-radius: 5px;
+            border-width: 40px;
+        }
+        .elem label {
+        margin-left: 3px; /* Add 5px space below the label */
+         /* Make label elements block-level for better alignment */
+         margin-right: 20px;
+         flex: 1;
+
+        }
+
+        .elem input[type="text"],
+
+
+        .elem select {
+            width: calc(100% - 10px); /* Set the width of the input/select to be 100% of its parent minus 10px */
+            padding: 5px; /* Add padding inside the input/select */
+            border: 2px solid #000000; /* Add border with color */
+            border-radius: 6px; /* Add border-radius for rounded corners */
+            margin-bottom: 10px; /* Add some space below the input/select */
+        }
+
+        .sb input[type="submit"] {
+            padding: 10px 20px; /* Add padding to the submit button */
+            background-color: #4CAF50; /* Green */
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .sb input[type="submit"]:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+    </style>
+    <script>
+        function validateForm() {
+            var nameField = document.getElementById("name");
+            var cardNumberField = document.getElementById("cardNumber");
+            var cvvField = document.getElementById("cvv");
+            var expiryMonthField = document.getElementById("expiryMonth");
+            var expiryYearField = document.getElementById("expiryYear");
+
+            var nameRegex = /^[a-zA-Z]+(\s[a-zA-Z]+)*$/;
+            var cardNumberRegex = /^\d{9,}$/; // Only digits and at least 9 digits
+            var cvvRegex = /^\d{3}$/; // Only digits and exactly 3 digits
+
+
+            if (nameField.value === "" || cardNumberField.value === "" || cvvField.value === "" || expiryMonthField.value === "" || expiryYearField.value === "") {
+                alert("Please fill in all fields");
+                return false;
+            }
+
+            if (!nameRegex.test(nameField.value)) { 
+                alert("Name should contain only alphabets");
+                return false;
+            }
+
+            if (!cvvRegex.test(cvvField.value)){
+                alert("CVV should only contain 3 digits");
+                return false;
+            }
+
+            if (!cardNumberRegex.test(cardNumberField.value)) {
+                alert("Card number should contain only digits and be at least 9 digits long");
+                return false;
+            }
+
+            return true;
+        }
+
+        window.onload = function() {
+            var expiryMonthField = document.getElementById("expiryMonth");
+            var expiryYearField = document.getElementById("expiryYear");
+
+            for (var i = 1; i <= 12; i++) {
+                var option = document.createElement("option");
+                option.value = i;
+                option.text = (i < 10) ? "0" + i : i;
+                expiryMonthField.add(option);
+            }
+
+            var currentYear = new Date().getFullYear();
+            for (var i = currentYear; i <= currentYear + 10; i++) {
+                var option = document.createElement("option");
+                option.value = i;
+                option.text = i;
+                expiryYearField.add(option);
+            }
+        };
+    </script>
+</head>
+<body>
+    
+    <div class = "classone">
+    <form onsubmit="return validateForm()">
+        <div class="elem">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+        </div>
+        
+        <div class = "elem">
+        <label  for="cardNumber">Credit Card Number:</label>
+        <input type="text" id="cardNumber" name="cardNumber" required><br>
+        </div>
+
+        <div class = "elem">
+        <label  for="cvv">CVV:</label>
+        <input type="text" id="cvv" name="cvv" required><br>
+        </div>
+
+        <div class = "elem">
+        <label  for="expiryMonth">Expiry Month:</label>
+        <select id="expiryMonth" name="expiryMonth" required>
+            <option value="">Select Month</option>
+        </select>
+        </div>
+
+        <div class = "elem">
+        <label  for="expiryYear">Expiry Year:</label>
+        <select id="expiryYear" name="expiryYear" required>
+            <option value="">Select Year</option>
+        </select><br>
+        </div>
+
+        <div class="sb">
+        <input type="submit" value="Submit">
+        </div>
+    </form>
+    </div>
+</body>
+</html>
